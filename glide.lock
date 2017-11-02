@@ -1,5 +1,5 @@
-hash: 9c04b00c52a7378e748a93c062aacd32f39fece29a79b50fddad6aa81e2cbab0
-updated: 2017-09-19T14:13:44.550343214-07:00
+hash: 343552ff01923c85e9c66b2351bbc10a77065c204f751780e17a99145a07346a
+updated: 2017-11-06T08:54:22.504559954-08:00
 imports:
 - name: github.com/amir/raidman
   version: 1ccc43bfb9c93cb401a4025e49c64ba71e5e668b
@@ -168,7 +168,7 @@ imports:
 - name: github.com/eapache/queue
   version: 44cc805cf13205b55f69e14bcb69867d1ae92f98
 - name: github.com/fnproject/fn_go
-  version: 418dcd8e37593d86604e89a48d7ee2e109a1d3bf
+  version: 7ce3bb2e624df60cdfbfc1ee5483f6df80bb2b1b
   subpackages:
   - client
   - client/apps
@@ -193,6 +193,8 @@ imports:
   - binding
   - json
   - render
+- name: github.com/go-ini/ini
+  version: c787282c39ac1fc618827141a1f762240def08a3
 - name: github.com/go-logfmt/logfmt
   version: 390ab7935ee28ec6b286364bba9b4dd6410cb3d5
 - name: github.com/go-openapi/analysis
@@ -277,12 +279,6 @@ imports:
   - json/parser
   - json/scanner
   - json/token
-- name: github.com/iron-io/iron_go3
-  version: ded317cb147d3b52b593da08495bc7d53efa17d8
-  subpackages:
-  - api
-  - config
-  - mq
 - name: github.com/jmoiron/jsonq
   version: e874b168d07ecc7808bc950a17998a8aa3141d82
 - name: github.com/jmoiron/sqlx
@@ -315,6 +311,17 @@ imports:
   - pbutil
 - name: github.com/Microsoft/go-winio
   version: 78439966b38d69bf38227fbf57ac8a6fee70f69a
+- name: github.com/minio/go-homedir
+  version: 21304a94172ae3a09dee2cd86a12fb6f842138c7
+- name: github.com/minio/minio-go
+  version: 91b19873dc91d7b785ce896f7e42d5c8f075ec9d
+  subpackages:
+  - pkg/credentials
+  - pkg/encrypt
+  - pkg/policy
+  - pkg/s3signer
+  - pkg/s3utils
+  - pkg/set
 - name: github.com/mitchellh/mapstructure
   version: d0303fe809921458f417bcf828397a65db30a7e4
 - name: github.com/Nvveen/Gotty
@@ -362,6 +369,7 @@ imports:
   version: c5b7fccd204277076155f10851dad72b76a49317
   subpackages:
   - prometheus
+  - prometheus/promhttp
 - name: github.com/prometheus/client_model
   version: 6f3806018612930941127f2a7c6c453ba2c527d2
   subpackages:
@@ -405,7 +413,7 @@ imports:
   subpackages:
   - codec
 - name: golang.org/x/crypto
-  version: 7d9177d70076375b9a59c8fde23d52d9c4a7ecd5
+  version: 687d4b818545e443c8ba223cbef20b1721afd4db
   subpackages:
   - bcrypt
   - blowfish
