@@ -1,7 +1,9 @@
 package testing
 
 import (
+	"bytes"
 	"context"
+	"io"
 	"strings"
 	"testing"
 	"time"
@@ -63,9 +65,11 @@ func Test(t *testing.T, fnl models.LogStore, ds models.Datastore) {
 			t.Fatalf("Test InsertLog(ctx, call.ID, logText): unexpected error during inserting log `%v`", err)
 		}
 		logEntry, err := fnl.GetLog(ctx, call.AppName, call.ID)
-		if !strings.Contains(logEntry.Log, logText) {
+		var b bytes.Buffer
+		io.Copy(&b, logEntry)
+		if !strings.Contains(b.String(), logText) {
 			t.Fatalf("Test GetLog(ctx, call.ID, logText): unexpected error, log mismatch. "+
-				"Expected: `%v`. Got `%v`.", logText, logEntry.Log)
+				"Expected: `%v`. Got `%v`.", logText, b.String())
 		}
 	})
 	t.Run("call-log-insert-get-delete", func(t *testing.T) {
@@ -81,13 +85,11 @@ func Test(t *testing.T, fnl models.LogStore, ds models.Datastore) {
 			t.Fatalf("Test InsertLog(ctx, call.ID, logText): unexpected error during inserting log `%v`", err)
 		}
 		logEntry, err := fnl.GetLog(ctx, call.AppName, call.ID)
-		if !strings.Contains(logEntry.Log, logText) {
+		var b bytes.Buffer
+		io.Copy(&b, logEntry)
+		if !strings.Contains(b.String(), logText) {
 			t.Fatalf("Test GetLog(ctx, call.ID, logText): unexpected error, log mismatch. "+
-				"Expected: `%v`. Got `%v`.", logText, logEntry.Log)
-		}
-		err = fnl.DeleteLog(ctx, call.AppName, call.ID)
-		if err != nil {
-			t.Fatalf("Test DeleteLog(ctx, call.ID): unexpected error during deleting log `%v`", err)
+				"Expected: `%v`. Got `%v`.", logText, b.String())
 		}
 	})
 }

@@ -326,7 +326,6 @@ func (s *Server) bindHandlers(ctx context.Context) {
 
 			apps.GET("/calls/:call", s.handleCallGet)
 			apps.GET("/calls/:call/log", s.handleCallLogGet)
-			apps.DELETE("/calls/:call/log", s.handleCallLogDelete)
 		}
 	}
 
